@@ -1,0 +1,19 @@
+<h1>Show Details</h1>
+
+<img src='<%= @single_track[0]['artworkUrl100'] %>'>
+<p>Track ID: <%= @single_track[0]['trackId'] %></p>
+<p>Track Name: <a target='__blank' href='<%= @single_track[0]['previewUrl'] %>'> <%= @single_track[0]['trackName'] %></a></p>
+<p>Track #: <%= @single_track[0]['trackNumber'] %> of <%= @single_track[0]['trackCount'] %></p>
+<p>Artist: <%= @single_track[0]['artistName'] %></p>
+<p>Album: <%= @single_track[0]['collectionName'] %></p>
+<p>Price: $<%= @single_track[0]['trackPrice'] %></p>
+
+<%= form_for @fav do |f| %>
+  <%= f.hidden_field :track, :value => @single_track[0]['trackName'] %>
+  <%= f.hidden_field :artist, :value => @single_track[0]['artistName'] %>
+  <%= f.hidden_field :preview, :value => @single_track[0]['previewUrl'] %>
+  <%= f.hidden_field :price, :value => @single_track[0]['trackPrice'].to_f %>
+  <%= f.submit :class => 'btn btn-success' %>
+<% end %>
+
+<%= link_to '<< Home', root_path, class: 'btn-xs btn-info' %>
